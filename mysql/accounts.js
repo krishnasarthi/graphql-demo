@@ -1,5 +1,5 @@
 import { buildSchema } from 'graphql';
-import Account from './mysql/accountService';
+import Account from './accountService';
 
 export const schema = buildSchema(`
 type Query {
@@ -8,7 +8,7 @@ type Query {
 `);
 
 export const resolvers = {
-    accounts: ({acc_name}) => {
+    accounts: ({ acc_name }) => {
         var acc = new Account();
         return acc.getAccountsAsync(acc_name).then(data => {
             return JSON.stringify(data);
